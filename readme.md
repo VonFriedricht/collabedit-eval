@@ -1,8 +1,16 @@
-http://collabedit.com
+## collabedit-eval
+### About
 
-requires programming language selected, evals code as javascript on change
+The UserScript evals Code that is written inside [collabedit](http://collabedit.com) `onchange`.
 
-[https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js](https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js)
+It requires that a programming language is selected after a Channel has been joined/created.
+
+Tested on Tampermonkey, Greasemonkey should also work.
+Click to install: [https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js](https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js)
+
+Link to [http://collabedit.com](http://collabedit.com)
+  
+  
 
 experimental support for `node-canvas`  
 try their example:  
@@ -22,5 +30,4 @@ ctx.beginPath()
 ctx.lineTo(50, 102)
 ctx.lineTo(50 + text.width, 102)
 ctx.stroke()
-
 ```
