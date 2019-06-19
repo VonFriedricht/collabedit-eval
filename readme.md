@@ -11,7 +11,8 @@ Click to install: [https://github.com/VonFriedricht/collabedit-eval/raw/master/c
 Link to [http://collabedit.com](http://collabedit.com)
   
   
-
+  
+#### node-canvas support
 experimental support for `node-canvas`  
 try their example:  
 ```js
