@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         collabedit-eval
 // @namespace	 https://github.com/VonFriedricht/collabedit-eval
-// @version      0.1.2
+// @version      0.1.3
 // @description  evals the javascript in collabedit.com
 // @author       VonFriedricht
 // @match        http://collabedit.com/*
@@ -47,4 +47,7 @@ createCanvas = (x, y) => {
   return canvas;
 };
 
+loop = ()=>{}
+
 setInterval(main, 1000);
+setInterval(loop, 1000/30);
