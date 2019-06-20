@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         collabedit-eval
 // @namespace	 https://github.com/VonFriedricht/collabedit-eval
-// @version      0.1.6
+// @version      0.1.7
 // @description  evals the javascript in collabedit.com
 // @author       VonFriedricht
 // @match        http://collabedit.com/*
@@ -48,7 +48,7 @@ createCanvas = (x, y) => {
 };
 
 slowLoop = ()=>{}
-setInterval(function(){looslowLoopp()}, 1000/10);
+setInterval(function(){slowLoop()}, 1000/10);
 
 clock = ()=>{}
 setInterval(function(){clock()}, 1000);
