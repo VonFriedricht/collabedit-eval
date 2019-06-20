@@ -47,7 +47,13 @@ createCanvas = (x, y) => {
   return canvas;
 };
 
+slowLoop = ()=>{}
+setInterval(function(){looslowLoopp()}, 1000/10);
+
+clock = ()=>{}
+setInterval(function(){clock()}, 1000);
+
 loop = ()=>{}
+setInterval(function(){loop()}, 1000/30);
 
 setInterval(main, 1000);
-setInterval(function(){loop()}, 1000/30);
