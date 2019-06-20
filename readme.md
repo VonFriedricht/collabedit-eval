@@ -1,15 +1,21 @@
 ## collabedit-eval
 ### About
 
-The UserScript evals Code that is written inside [collabedit](http://collabedit.com) `onchange`.
+The UserScript evaluates Code written in [collabedit](http://collabedit.com) when the code changes.
 
-It requires that a programming language is selected after a Channel has been joined/created.
+It requires that a programming language is selected in the collabedit-texteditor.
 
-Tested on Tampermonkey, Greasemonkey should also work.
+Tested on Tampermonkey, but Greasemonkey should also work.
 Click to install: [https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js](https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js)
 
 Link to [http://collabedit.com](http://collabedit.com)
   
+  
+  
+### Support of node screens
+experimental support for "Node Canvas".  
+
+Translated with www.DeepL.com/Translator
   
   
 ### node-canvas support
