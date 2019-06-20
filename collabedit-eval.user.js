@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         collabedit-eval
 // @namespace	 https://github.com/VonFriedricht/collabedit-eval
-// @version      0.1.4
+// @version      0.1.5
 // @description  evals the javascript in collabedit.com
 // @author       VonFriedricht
 // @match        http://collabedit.com/*
@@ -38,8 +38,8 @@ createCanvas = (x, y) => {
     canvas.id = "canvas";
     canvas.style.border = "1px dotted gray";
     canvas.style.position = "absolute";
-    canvas.style.right = "320px";
-    canvas.style.top = "1em";
+    canvas.style.right = "4em";
+    canvas.style.top = "9em";
     document.getElementById("main").prepend(canvas);
   }
   canvas.width = x;
