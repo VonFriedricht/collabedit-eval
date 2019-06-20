@@ -5,7 +5,7 @@ The UserScript evaluates Code written in [collabedit](http://collabedit.com) whe
 
 It requires that a programming language is selected in the collabedit-texteditor.
 
-Tested on Tampermonkey, but Greasemonkey should also work.
+Tested on Tampermonkey, but Greasemonkey should also work.  
 Click to install: [https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js](https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js)
 
 Link to [http://collabedit.com](http://collabedit.com)
