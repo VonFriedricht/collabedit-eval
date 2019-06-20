@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         collabedit-eval
 // @namespace	 https://github.com/VonFriedricht/collabedit-eval
-// @version      0.1.1
+// @version      0.1.2
 // @description  evals the javascript in collabedit.com
 // @author       VonFriedricht
 // @match        http://collabedit.com/*
@@ -14,7 +14,7 @@ let lastCode = "hello world";
 function main() {
   let frame = document.getElementById("frame_the_input");
   if (!frame) return false;
-  let code = frame.contentDocument.querySelector("#line_number ~ *").innerText;
+  let code = frame.contentDocument.getElementById("textarea").value;
   if (lastCode != code) {
     lastCode = code;
     let evalreturn = eval(code);
