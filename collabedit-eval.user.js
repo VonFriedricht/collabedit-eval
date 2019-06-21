@@ -27,6 +27,14 @@ let loopstatus = {
         clearInterval(this.interval)
         this.interval = false
       }
+    },
+    update: function(){
+      if(this.isset()){
+        this.start()
+      }
+      else{
+        this.end()
+      }
     }
   }
 }
@@ -39,14 +47,7 @@ function main() {
     lastCode = code;
     let evalreturn = eval(code);
     console.log(evalreturn);
-    /*
-    if(loopstatus.loop.isset()){
-      loopstatus.loop.start()
-    }
-    else{
-      loopstatus.loop.end()
-    }
-    */
+    loopstatus.loop.update();
   }
 }
 
