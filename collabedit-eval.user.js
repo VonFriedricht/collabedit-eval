@@ -11,6 +11,26 @@
 
 let lastCode = "hello world";
 
+let loopstatus = {
+  loop: {
+    id: "loop",
+    interval: false,
+    isset: () => typeof loop != "undefined",
+    timer: 1000/30,
+    start: function(){
+      if( this.interval === false ){
+        this.interval = setInterval(() => this.funct(), this.timer)
+      }
+    },
+    end: function(){
+      if( this.interval !== false ){
+        clearInterval(this.interval)
+        this.interval = false
+      }
+    }
+  }
+}
+
 function main() {
   let frame = document.getElementById("frame_the_input");
   if (!frame) return false;
@@ -19,6 +39,14 @@ function main() {
     lastCode = code;
     let evalreturn = eval(code);
     console.log(evalreturn);
+    /*
+    if(loopstatus.loop.isset()){
+      loopstatus.loop.start()
+    }
+    else{
+      loopstatus.loop.end()
+    }
+    */
   }
 }
 
