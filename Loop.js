@@ -13,7 +13,11 @@ Loop = class {
   }
   start() {
     if (this.interval === false) {
-      this.interval = setInterval(() => this.funct(), this.timer)
+      this.interval = setInterval(() => {
+        if (this.funct == "function") {
+          this.funct()
+        }
+      }, this.timer)
     }
   }
   end() {
