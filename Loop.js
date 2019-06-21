@@ -1,4 +1,4 @@
-class Loop {
+Loop = class{
   constructor(name, tickspeed) {
     this.name = name
     this.interval = false
