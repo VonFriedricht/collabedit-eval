@@ -30,4 +30,7 @@ Loop = class{
       this.end()
     }
   }
+  clear() {
+    eval(`delete ${this.name}`)
+  }
 }
