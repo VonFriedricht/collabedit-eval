@@ -11,32 +11,45 @@
 
 let lastCode = "hello world";
 
-let loopstatus = {
-  loop: {
-    id: "loop",
-    interval: false,
-    isset: () => typeof loop != "undefined",
-    timer: 1000/30,
-    start: function(){
-      if( this.interval === false ){
-        this.interval = setInterval(() => this.funct(), this.timer)
-      }
-    },
-    end: function(){
-      if( this.interval !== false ){
-        clearInterval(this.interval)
-        this.interval = false
-      }
-    },
-    update: function(){
-      if(this.isset()){
-        this.start()
-      }
-      else{
-        this.end()
-      }
+
+class Loop(){
+  constructor(name, tickspeed){
+    this.name = name;
+    this.interval = false;
+    this.timer = 1000/tickspeed;
+    this.funct = ()=>{}
+  }
+  isset(){
+    return eval(`typeof `${this.name}` != "undefined"`)
+  }
+  setTps(tps){
+    this.timer = 1000/tps;
+  }
+  start(){
+    if( this.interval === false ){
+      this.interval = setInterval(() => this.funct(), this.timer)
     }
   }
+  end(){
+    if( this.interval !== false ){
+      clearInterval(this.interval)
+      this.interval = false
+    }
+  }
+  update(){
+    if(this.isset()){
+      this.funct = eval(this.name)
+      this.start()
+    }
+    else{
+      this.end()
+    }
+  }
+  
+}
+
+let loopstatus = {
+  loop: new Loop("loop")
 }
 
 function main() {
