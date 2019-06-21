@@ -9,47 +9,28 @@
 // @updateURL	 https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js
 // ==/UserScript==
 
-let lastCode = "hello world"
+var Loop;
+var loopstatus;
 
-class Loop {
-  constructor(name, tickspeed) {
-    this.name = name
-    this.interval = false
-    this.timer = 1000 / tickspeed
-    this.funct = () => {}
-  }
-  isset() {
-    return eval(`typeof ${this.name} != "undefined"`)
-  }
-  setTps(tps) {
-    this.timer = 1000 / tps
-  }
-  start() {
-    if (this.interval === false) {
-      this.interval = setInterval(() => this.funct(), this.timer)
-    }
-  }
-  end() {
-    if (this.interval !== false) {
-      clearInterval(this.interval)
-      this.interval = false
-    }
-  }
-  update() {
-    if (this.isset()) {
-      this.funct = eval(this.name)
-      this.start()
-    } else {
-      this.end()
-    }
+var lastCode;
+
+async function require(path){
+  let basePath = `https://raw.githubusercontent.com/VonFriedricht/collabedit-eval/master/`
+  let response = await fetch(basePath+path)
+  let responseText = await response.text()
+  return eval(responseText)
+}
+
+async function init() {
+  Loop = await require("Loop.js")
+  // chat = await require("chat.js")
+  // createCanvas = await require("createCanvas.js")
+  loopstatus = {
+    loop: new Loop("loop")
   }
 }
 
-let loopstatus = {
-  loop: new Loop("loop")
-}
-
-function main() {
+function exec(){
   let frame = document.getElementById("frame_the_input")
   if (!frame) return false
   let code = frame.contentDocument.getElementById("textarea").value
@@ -101,4 +82,4 @@ setInterval(function() {
   loop()
 }, 1000 / 30)
 
-setInterval(main, 1000)
+init().then(setInterval(exec, 1000))
