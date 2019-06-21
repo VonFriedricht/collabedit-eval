@@ -1,4 +1,4 @@
-Loop = class{
+Loop = class {
   constructor(name, tickspeed) {
     this.name = name
     this.interval = false
@@ -31,6 +31,8 @@ Loop = class{
     }
   }
   clear() {
-    eval(`delete ${this.name}`)
+    if (this.isset()) {
+      eval(`delete ${this.name}`)
+    }
   }
 }
