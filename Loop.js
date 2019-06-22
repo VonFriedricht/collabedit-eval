@@ -37,6 +37,7 @@ Loop = class {
   }
   clear() {
     if (this.isset()) {
+      eval(`${this.name} = false`)
       this.funct = false
     }
   }
