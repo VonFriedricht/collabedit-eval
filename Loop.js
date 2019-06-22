@@ -14,6 +14,7 @@ Loop = class {
   start() {
     if (this.interval === false) {
       this.interval = setInterval(() => {
+        console.log(this)
         if (typeof this.funct == "function") {
           this.funct()
         }
