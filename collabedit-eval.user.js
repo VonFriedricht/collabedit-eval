@@ -25,9 +25,11 @@ async function init() {
   Loop = await require("Loop.js")
   // chat = await require("chat.js")
   // createCanvas = await require("createCanvas.js")
-  loopstatus = {
-    loop: new Loop("loop")
-  }
+  loops = [
+    new Loop("loop", 30), 
+    new Loop("slowLoop", 10), 
+    new Loop("clock", 1)
+  ]
 }
 
 function exec(){
@@ -36,9 +38,14 @@ function exec(){
   let code = frame.contentDocument.getElementById("textarea").value
   if (lastCode != code) {
     lastCode = code
+    for (let l of loops) {
+      l.clear()
+    }
     let evalreturn = eval(code)
     console.log(evalreturn)
-    loopstatus.loop.update()
+    for (let l of loops) {
+      l.update()
+    }
   }
 }
 
@@ -66,20 +73,5 @@ createCanvas = (x, y) => {
   canvas.height = y
   return canvas
 }
-
-slowLoop = () => {}
-setInterval(function() {
-  slowLoop()
-}, 1000 / 10)
-
-clock = () => {}
-setInterval(function() {
-  clock()
-}, 1000)
-
-loop = () => {}
-setInterval(function() {
-  loop()
-}, 1000 / 30)
 
 init().then(setInterval(exec, 1000))

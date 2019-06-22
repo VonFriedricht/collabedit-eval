@@ -6,7 +6,7 @@ Loop = class {
     this.funct = () => {}
   }
   isset() {
-    return eval(`typeof ${this.name} != "undefined"`)
+    return eval(`typeof ${this.name} == "function"`)
   }
   setTps(tps) {
     this.timer = 1000 / tps
@@ -14,7 +14,7 @@ Loop = class {
   start() {
     if (this.interval === false) {
       this.interval = setInterval(() => {
-        if (this.funct == "function") {
+        if (typeof this.funct == "function") {
           this.funct()
         }
       }, this.timer)
@@ -36,7 +36,7 @@ Loop = class {
   }
   clear() {
     if (this.isset()) {
-      eval(`delete ${this.name}`)
+      this.funct = false
     }
   }
 }
