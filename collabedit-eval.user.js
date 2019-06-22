@@ -1,22 +1,22 @@
 // ==UserScript==
 // @name         collabedit-eval
-// @namespace	 https://github.com/VonFriedricht/collabedit-eval
-// @version      0.1.7
+// @namespace    https://github.com/VonFriedricht/collabedit-eval
+// @version      0.2.0
 // @description  evals the javascript in collabedit.com
 // @author       VonFriedricht
 // @match        http://collabedit.com/*
 // @grant        none
-// @updateURL	 https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js
+// @updateURL    https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js
 // ==/UserScript==
 
-var Loop;
-var loopstatus;
+var Loop
+var loops
 
-var lastCode;
+var lastCode
 
-async function require(path){
+async function require(path) {
   let basePath = `https://raw.githubusercontent.com/VonFriedricht/collabedit-eval/master/`
-  let response = await fetch(basePath+path)
+  let response = await fetch(basePath + path)
   let responseText = await response.text()
   return eval(responseText)
 }
@@ -32,7 +32,7 @@ async function init() {
   ]
 }
 
-function exec(){
+function exec() {
   let frame = document.getElementById("frame_the_input")
   if (!frame) return false
   let code = frame.contentDocument.getElementById("textarea").value
