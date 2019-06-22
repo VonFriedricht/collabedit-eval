@@ -13,9 +13,8 @@ Loop = class {
   }
   start() {
     if (this.interval === false) {
-      this.interval = setInterval(
-        function(){
-          if (typeof this.funct == "function") {
+      this.interval = setInterval(function(){
+          if (this.isset()) {
             this.funct()
           }
         }
