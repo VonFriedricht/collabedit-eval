@@ -13,7 +13,7 @@ Loop = class {
   }
   start() {
     if (this.interval === false) {
-      this.interval = setInterval(function(){
+      this.interval = setInterval(() => {
           if (this.isset()) {
             this.funct()
           }
