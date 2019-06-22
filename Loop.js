@@ -11,10 +11,9 @@ Loop = class {
   setTps(tps) {
     this.timer = 1000 / tps
   }
-  start() {
+  start = () => {
     if (this.interval === false) {
       this.interval = setInterval(() => {
-        console.log(this)
         if (typeof this.funct == "function") {
           this.funct()
         }
