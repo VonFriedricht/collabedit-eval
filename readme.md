@@ -8,7 +8,6 @@ Click to install UserScript: [https://github.com/VonFriedricht/collabedit-eval/r
 
 Link to [http://collabedit.com](http://collabedit.com)
   
-nvm
   
 ### node-canvas support
 experimental support for `node-canvas`  
