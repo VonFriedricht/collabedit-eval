@@ -4,7 +4,10 @@ chat = {
     var msg = document.createElement("div")
     
     msg.className = "chtmsg"
-    msg.innerHTML = `<span class="nickspan">log: </span><span class="normalchat">${JSON.stringify(message)}</span>`
+    if( typeof message != "string" ){
+      message = JSON.stringify(message)
+    }
+    msg.innerHTML = `<span class="nickspan">log: </span><span class="normalchat">${message}</span>`
     
     chatDiv.appendChild(msg)
     chatDiv.scrollTop = chatDiv.scrollHeight
