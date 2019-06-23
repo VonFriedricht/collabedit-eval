@@ -1,14 +1,13 @@
 // ==UserScript==
 // @name         collabedit-eval
 // @namespace    https://github.com/VonFriedricht/collabedit-eval
-// @version      0.2.0
+// @version      0.2.1
 // @description  evals the javascript in collabedit.com
 // @author       VonFriedricht
 // @match        http://collabedit.com/*
 // @grant        none
 // @updateURL    https://github.com/VonFriedricht/collabedit-eval/raw/master/collabedit-eval.user.js
 // ==/UserScript==
-
 
 // Scoping
 var Loop
@@ -25,23 +24,19 @@ async function require(path) {
 
 // First Script at Startup
 async function init() {
-  Loop = await require("Loop.js")
-  chat = await require("chat.js")
-  createCanvas = await require("createCanvas.js")
-  loops = [
-    new Loop("loop", 30), 
-    new Loop("slowLoop", 10), 
-    new Loop("clock", 1)
-  ]
-  
-  chat.log("init passed!")
+  Loop = await require('Loop.js')
+  chat = await require('chat.js')
+  createCanvas = await require('createCanvas.js')
+  loops = [new Loop('loop', 30), new Loop('slowLoop', 10), new Loop('clock', 1)]
+
+  chat.log('init passed!')
 }
 
 // Main-Loop after init
 function exec() {
-  let frame = document.getElementById("frame_the_input")
+  let frame = document.getElementById('frame_the_input')
   if (!frame) return false
-  let code = frame.contentDocument.getElementById("textarea").value
+  let code = frame.contentDocument.getElementById('textarea').value
   if (lastCode != code) {
     lastCode = code
     for (let l of loops) {

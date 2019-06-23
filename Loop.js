@@ -13,12 +13,15 @@ Loop = class {
   }
   start() {
     if (this.interval === false) {
-      this.interval = setInterval((name) => {
+      this.interval = setInterval(
+        name => {
           if (eval(`typeof ${name} == "function"`)) {
             eval(`${name}()`)
           }
-        }
-      , this.timer,this.name)
+        },
+        this.timer,
+        this.name
+      )
     }
   }
   end() {
