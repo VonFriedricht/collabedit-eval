@@ -42,6 +42,9 @@ function exec() {
     for (let l of loops) {
       l.clear()
     }
+    code = code
+            .replace(/for ([a-zA-Z]*?) in range\((\d*?)\)/g,"for(let $1 = 0; $1 < $2; $1++)")
+            .replace(/for ([a-zA-Z]*?) in range\((\d*?),(\d*?)\)/g,"for(let $1 = $2; $1 <= $3; $1++)")
     let evalreturn = eval(code)
     console.log(evalreturn)
     for (let l of loops) {
