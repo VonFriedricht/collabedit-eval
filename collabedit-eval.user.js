@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         collabedit-eval
 // @namespace    https://github.com/VonFriedricht/collabedit-eval
-// @version      0.2.1
+// @version      0.2.2
 // @description  evals the javascript in collabedit.com
 // @author       VonFriedricht
 // @match        http://collabedit.com/*
