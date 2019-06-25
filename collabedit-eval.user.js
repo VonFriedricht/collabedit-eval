@@ -15,13 +15,13 @@ var loops
 var lastCode
 var randomUpdateNumber = Math.random() // gets rerolled everytime the code updates
 var lastRandomUpdateNumber = -1
+var animLoop
 
 // To import other files inside repo
 async function require(path) {
   let basePath = `https://raw.githubusercontent.com/VonFriedricht/collabedit-eval/master/`
   let response = await fetch(basePath + path)
   let responseText = await response.text()
-
   return eval(responseText)
 }
 
@@ -31,6 +31,7 @@ async function init() {
   chat = await require('chat.js')
   createCanvas = await require('createCanvas.js')
   loops = [new Loop('loop', 30), new Loop('slowLoop', 10), new Loop('clock', 1)]
+  animLoop = await require('animLoop.js')
 
   chat.log('init passed!')
 }
@@ -67,4 +68,4 @@ function exec() {
 }
 
 // ↑ wake-up
-require('animLoop.js').then(n => init().then(setInterval(exec, 1000)))
+init().then(setInterval(exec, 1000))

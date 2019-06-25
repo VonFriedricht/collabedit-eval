@@ -1,5 +1,5 @@
 anim = () => {}
-function animLoop() {
+animLoop = () => {
   anim()
   if (randomUpdateNumber != lastRandomUpdateNumber) {
     window.requestAnimationFrame(animLoop)
