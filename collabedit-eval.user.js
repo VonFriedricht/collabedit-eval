@@ -13,7 +13,7 @@
 var Loop
 var loops
 var lastCode
-var randomUpdateNumber  = Math.random() // gets rerolled everytime the code updates
+var randomUpdateNumber = Math.random() // gets rerolled everytime the code updates
 var lastRandomUpdateNumber = -1
 
 // To import other files inside repo
@@ -21,6 +21,7 @@ async function require(path) {
   let basePath = `https://raw.githubusercontent.com/VonFriedricht/collabedit-eval/master/`
   let response = await fetch(basePath + path)
   let responseText = await response.text()
+
   return eval(responseText)
 }
 
@@ -40,7 +41,7 @@ function exec() {
   if (!frame) return false
   let code = frame.contentDocument.getElementById('textarea').value
   if (lastCode == code) {
-    return false;
+    return false
   }
   // everytime the code changes ↓
   lastCode = code
@@ -49,27 +50,21 @@ function exec() {
     l.clear()
   }
   code = code
-          .replace(/for ([a-zA-Z]*?) in range\((\d*?)\)/g,"for(let $1 = 0; $1 < $2; $1++)")
-          .replace(/for ([a-zA-Z]*?) in range\((\d*?),(\d*?)\)/g,"for(let $1 = $2; $1 <= $3; $1++)")
+    .replace(/for ([a-zA-Z]*?) in range\((\d*?)\)/g, 'for(let $1 = 0; $1 < $2; $1++)')
+    .replace(/for ([a-zA-Z]*?) in range\((\d*?),(\d*?)\)/g, 'for(let $1 = $2; $1 <= $3; $1++)')
   let evalreturn = eval(code)
   console.log(evalreturn)
   for (let l of loops) {
     l.update()
   }
-  setTimeout(()=>{
-    randomUpdateNumber = Math.random()
-    animLoop()
-  },100)
-  // 
-}
-
-anim = () => {}
-function animLoop(){
-  anim()
-    if(randomUpdateNumber != lastRandomUpdateNumber){
-        window.requestAnimationFrame(animLoop);
-    }
+  if (typeof animLoop == 'function') {
+    setTimeout(() => {
+      randomUpdateNumber = Math.random()
+      animLoop()
+    }, 100)
+  }
+  //
 }
 
 // ↑ wake-up
-init().then(setInterval(exec, 1000))
+require('animLoop.js').then(n => init().then(setInterval(exec, 1000)))
