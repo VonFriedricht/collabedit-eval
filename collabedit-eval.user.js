@@ -45,7 +45,6 @@ function exec() {
   // everytime the code changes ↓
   lastCode = code
   lastRandomUpdateNumber = randomUpdateNumber
-  randomUpdateNumber = Math.random()
   for (let l of loops) {
     l.clear()
   }
@@ -57,6 +56,10 @@ function exec() {
   for (let l of loops) {
     l.update()
   }
+  setTimeout(()=>{
+    randomUpdateNumber = Math.random()
+    animLoop
+  },100)
   // 
 }
 
@@ -67,7 +70,6 @@ function animLoop(){
         window.requestAnimationFrame(animLoop);
     }
 }
-animLoop()
 
 // ↑ wake-up
 init().then(setInterval(exec, 1000))
