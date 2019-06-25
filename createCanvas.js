@@ -7,14 +7,23 @@ createCanvas = (x, y, input = false) => {
     canvas.style.position = 'absolute'
     canvas.style.right = '4em'
     canvas.style.top = '9em'
-    if(input){
-      canvas.onmousedown = e => {mouse.pressed = true}
-      canvas.onmouseup = e => {mouse.pressed = false}
-      canvas.onmousemove = e => {mouse.x = e.layerX; mouse.y = e.layerY}
-      document.onkeydown = e => {console.log(1, e)}
-      document.onkeyup = e => {console.log(0, e)}
-    }
     document.getElementById('main').prepend(canvas)
+  }
+  if(input && !canvas.keys){
+    canvas.keys = {
+      status: {},
+      pressed: e => {return !!canvas.keys.status[e.key]}
+    }
+    canvas.mouse = {
+      pressed: false,
+      x: -1,
+      y: -1
+    }
+    canvas.onmousedown = e => {canvas.mouse.pressed = true}
+    canvas.onmouseup = e => {canvas.mouse.pressed = false}
+    canvas.onmousemove = e => {canvas.mouse.x = e.layerX; canvas.mouse.y = e.layerY}
+    document.onkeydown = e => {canvas.keys.status[e.key] = true}
+    document.onkeyup = e => {canvas.keys.status[e.key] = false}
   }
   canvas.width = x
   canvas.height = y
