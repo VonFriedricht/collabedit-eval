@@ -58,7 +58,7 @@ function exec() {
   }
   setTimeout(()=>{
     randomUpdateNumber = Math.random()
-    animLoop
+    animLoop()
   },100)
   // 
 }
