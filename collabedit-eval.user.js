@@ -13,6 +13,8 @@
 var Loop
 var loops
 var lastCode
+var randomUpdateNumber  = Math.random() // gets rerolled everytime the code updates
+var lastRandomUpdateNumber = -1
 
 // To import other files inside repo
 async function require(path) {
@@ -37,21 +39,35 @@ function exec() {
   let frame = document.getElementById('frame_the_input')
   if (!frame) return false
   let code = frame.contentDocument.getElementById('textarea').value
-  if (lastCode != code) {
-    lastCode = code
-    for (let l of loops) {
-      l.clear()
-    }
-    code = code
-            .replace(/for ([a-zA-Z]*?) in range\((\d*?)\)/g,"for(let $1 = 0; $1 < $2; $1++)")
-            .replace(/for ([a-zA-Z]*?) in range\((\d*?),(\d*?)\)/g,"for(let $1 = $2; $1 <= $3; $1++)")
-    let evalreturn = eval(code)
-    console.log(evalreturn)
-    for (let l of loops) {
-      l.update()
-    }
+  if (lastCode == code) {
+    return false;
   }
+  // everytime the code changes ↓
+  lastCode = code
+  lastRandomUpdateNumber = randomUpdateNumber
+  randomUpdateNumber = Math.random()
+  for (let l of loops) {
+    l.clear()
+  }
+  code = code
+          .replace(/for ([a-zA-Z]*?) in range\((\d*?)\)/g,"for(let $1 = 0; $1 < $2; $1++)")
+          .replace(/for ([a-zA-Z]*?) in range\((\d*?),(\d*?)\)/g,"for(let $1 = $2; $1 <= $3; $1++)")
+  let evalreturn = eval(code)
+  console.log(evalreturn)
+  for (let l of loops) {
+    l.update()
+  }
+  // 
 }
+
+anim = () => {}
+function animLoop(){
+  anim()
+    if(randomUpdateNumber != lastRandomUpdateNumber){
+        window.requestAnimationFrame(animLoop);
+    }
+}
+animLoop()
 
 // ↑ wake-up
 init().then(setInterval(exec, 1000))
