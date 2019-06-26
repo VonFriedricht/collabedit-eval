@@ -9,7 +9,7 @@ createCanvas = (x, y, input = false) => {
     canvas.style.top = '9em'
     document.getElementById('main').prepend(canvas)
   }
-  if (input && !KEYS) {
+  if (input && !KEYS && !MOUSE) {
     KEYS = {
       status: {},
       pressed: function(e) {
@@ -22,14 +22,14 @@ createCanvas = (x, y, input = false) => {
       y: -1
     }
     canvas.onmousedown = e => {
-      mouse.pressed = true
+      MOUSE.pressed = true
     }
     canvas.onmouseup = e => {
-      mouse.pressed = false
+      MOUSE.pressed = false
     }
     canvas.onmousemove = e => {
-      mouse.x = e.layerX
-      mouse.y = e.layerY
+      MOUSE.x = e.layerX
+      MOUSE.y = e.layerY
     }
     document.onkeydown = e => {
       KEYS.status[e.key] = true
