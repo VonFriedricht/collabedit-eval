@@ -9,21 +9,34 @@ createCanvas = (x, y, input = false) => {
     canvas.style.top = '9em'
     document.getElementById('main').prepend(canvas)
   }
-  if(input && !canvas.keys){
-    canvas.keys = {
+  if (input && !KEYS) {
+    KEYS = {
       status: {},
-      pressed: e => {return !!canvas.keys.status[e.key]}
+      pressed: function(e) {
+        return this.status[e]
+      }
     }
-    canvas.mouse = {
+    MOUSE = {
       pressed: false,
       x: -1,
       y: -1
     }
-    canvas.onmousedown = e => {canvas.mouse.pressed = true}
-    canvas.onmouseup = e => {canvas.mouse.pressed = false}
-    canvas.onmousemove = e => {canvas.mouse.x = e.layerX; canvas.mouse.y = e.layerY}
-    document.onkeydown = e => {canvas.keys.status[e.key] = true}
-    document.onkeyup = e => {canvas.keys.status[e.key] = false}
+    canvas.onmousedown = e => {
+      mouse.pressed = true
+    }
+    canvas.onmouseup = e => {
+      mouse.pressed = false
+    }
+    canvas.onmousemove = e => {
+      mouse.x = e.layerX
+      mouse.y = e.layerY
+    }
+    document.onkeydown = e => {
+      KEYS.status[e.key] = true
+    }
+    document.onkeyup = e => {
+      KEYS.status[e.key] = false
+    }
   }
   canvas.width = x
   canvas.height = y
