@@ -16,6 +16,7 @@ var lastCode
 var randomUpdateNumber = Math.random() // gets rerolled everytime the code updates
 var lastRandomUpdateNumber = -1
 var animLoop
+var codeTranslations
 
 // To import other files inside repo
 async function require(path) {
@@ -30,6 +31,7 @@ async function init() {
   Loop = await require('Loop.js')
   chat = await require('chat.js')
   createCanvas = await require('createCanvas.js')
+  codeTranslations = await require('codeTranslations.js')
   loops = [new Loop('loop', 30), new Loop('slowLoop', 10), new Loop('clock', 1)]
   animLoop = await require('animLoop.js')
 
@@ -50,10 +52,7 @@ function exec() {
   for (let l of loops) {
     l.clear()
   }
-  code = code
-    .replace(/for ([a-zA-Z]*?) in range\(([^\s]*?)\)/g, 'for(let $1 = 0; $1 < $2; $1++)')
-    .replace(/for ([a-zA-Z]*?) in range\(([^\s]*?),([^\s]*?)\)/g, 'for(let $1 = $2; $1 <= $3; $1++)')
-    .replace(/([^\s]*?).clean\(\)/g, `if($1.canvas){$1.clearRect(0,0,$1.canvas.width,$1.canvas.height)}`)
+  code = codeTranslations(code)
   let evalreturn = eval(code)
   console.log(evalreturn)
   for (let l of loops) {
