@@ -31,11 +31,24 @@ ctx.stroke()
 ```
 
 ### animation
-wip
+wip  
 anim, loop, slowLoop, clock
 
+```js
+const canvas = createCanvas(100,100)
+const ctx = canvas.getContext("2d")
+
+let x = 0
+
+anim = () => {
+    ctx.clean()
+    ctx.fillRect(x,10,10,10)
+    x++
+}
+```
+
 ### input
-wip
+wip  
 canvas.mouse, canvas.keys
 
 ### alternative for-loop
