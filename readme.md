@@ -29,3 +29,23 @@ ctx.lineTo(50, 102)
 ctx.lineTo(50 + text.width, 102)
 ctx.stroke()
 ```
+
+### animation
+wip
+anim, loop, slowLoop, clock
+
+### input
+wip
+canvas.mouse, canvas.keys
+
+### alternative for-loop
+```js
+for i in range(5){
+
+}
+// getting converted to:
+for (let i = 0; i < 5; i++) {
+
+}
+// because a for loop can become infinite while writing
+```
