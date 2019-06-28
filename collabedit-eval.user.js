@@ -28,12 +28,12 @@ async function require(path) {
 
 // First Script at Startup
 async function init() {
-  Loop = await require('Loop.js')
-  chat = await require('chat.js')
-  createCanvas = await require('createCanvas.js')
-  codeTranslations = await require('codeTranslations.js')
+  Loop = await require('src/Loop.js')
+  chat = await require('src/chat.js')
+  createCanvas = await require('src/createCanvas.js')
+  codeTranslations = await require('src/codeTranslations.js')
   loops = [new Loop('loop', 30), new Loop('slowLoop', 10), new Loop('clock', 1)]
-  animLoop = await require('animLoop.js')
+  animLoop = await require('src/animLoop.js')
 
   chat.log('init passed!')
 }
