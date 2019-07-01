@@ -10,6 +10,6 @@ chat = {
     messageElement.innerHTML = `<span class="nickspan">log: </span><span class="normalchat">${message}</span>`
 
     chatBox.appendChild(messageElement)
-    chatBox.scrollTop = chatDiv.scrollHeight
+    chatBox.scrollTop = chatBox.scrollHeight
   }
 }
