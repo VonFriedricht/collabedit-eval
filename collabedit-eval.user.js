@@ -1,7 +1,6 @@
 // ==UserScript==
 // @name         collabedit-eval
 // @namespace    https://github.com/VonFriedricht/collabedit-eval
-// @version      0.2.3
 // @description  evals the javascript in collabedit.com
 // @author       VonFriedricht
 // @match        http://collabedit.com/*
@@ -17,6 +16,7 @@ var randomUpdateNumber = Math.random() // gets rerolled everytime the code updat
 var lastRandomUpdateNumber = -1
 var animLoop
 var codeTranslations
+var watch
 
 // To import other files inside repo
 require = async function(path) {
@@ -30,6 +30,7 @@ require = async function(path) {
 async function init() {
   Loop = await require('src/Loop.js')
   chat = await require('src/chat.js')
+  watch = await require('src/variableWatch.js')
   createCanvas = await require('src/createCanvas.js')
   codeTranslations = await require('src/codeTranslations.js')
   loops = [new Loop('loop', 30), new Loop('slowLoop', 10), new Loop('clock', 1)]
