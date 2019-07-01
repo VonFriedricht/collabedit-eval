@@ -10,5 +10,4 @@ watch = content => {
     document.getElementById('main').prepend(watch)
   }
   watch.innerHTML = JSON.stringify(content, null, 2)
-  return canvas
 }
