@@ -1,4 +1,9 @@
-dice=function(a,b=false){
-  if(b===false)return Math.floor((Math.random()*a)+1)
-  return Number(a)+Number(Math.floor(Math.random()*(b-a+1)))
+dice = function(a, b) {
+  let min = 1
+  let max = Number(a)
+  if (typeof b != 'undefined') {
+    min = Number(a)
+    max = Number(b)
+  }
+  return min + Number(Math.floor(Math.random() * (max - min + 1)))
 }
