@@ -62,3 +62,11 @@ for (let i = 0; i < 5; i++) {
 }
 // because a for loop can become infinite while writing
 ```
+
+### without userscript:
+to load the script without userscript can you just paste this script in the console (in f12 at most browsers)
+```js
+fetch(`https://raw.githubusercontent.com/VonFriedricht/collabedit-eval/master/collabedit-eval.user.js`)
+  .then(r => r.text())
+  .then(r => eval(r))
+```
